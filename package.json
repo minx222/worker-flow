@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:admin": "cd packages/admin && pnpm dev",
+    "dev": "cd packages/admin && pnpm dev",
     "husky": "husky install",
+    "lint": "biome lint",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "commit": "git status && git add -A && git-cz && git push"
   },

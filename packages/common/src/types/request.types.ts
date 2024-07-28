@@ -5,9 +5,7 @@ interface Result {
 	msg: string;
 }
 
-// * 请求响应参数(包含data)
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-export interface ResultData<T = any> extends Result {
+export interface ResultData<T = string> extends Result {
 	data: T;
 }
 
