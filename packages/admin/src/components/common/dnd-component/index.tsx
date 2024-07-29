@@ -1,30 +1,25 @@
+import type { Component } from '@/types'
 import classNames from 'classnames';
-import { v4 as uuid } from 'uuid'
+
 import { useDrag } from 'react-dnd'
 
-export interface Props {
-	className?: string;
-	label?: string;
-}
 
-const DndComponent: React.FC<Props> = (props) => {
-	const ref = useRef<HTMLDivElement>(null)
-	const [, drag]= useDrag({
-    type: 'component',
+const DndComponent: React.FC<Component> = (props) => {
+	const [, drag] = useDrag(() => ({
+    type: props.type,
 		item: {
 			...props,
-			code: uuid()
 		},
-  });
-	useEffect(() => {
-		drag(ref)
-	}, [drag, ref])
+    collect: monitor => ({
+      isDragging: !!monitor.isDragging(),
+    }),
+  }));
 
 	return (
-		<div ref={ref} className={classNames(props.className, 'w-16 h-16')}>
-			{props.label}
+		<div className={classNames("w-16 h-16", props.className)} ref={drag}>
+			<div className='flex items-center justify-center w-full h-full text-sm'>{props.label}</div>
 		</div>
-	)
+	);
 }
 
 export default DndComponent;

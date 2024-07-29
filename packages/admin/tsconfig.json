@@ -14,7 +14,8 @@
     "allowImportingTsExtensions": true,
 		"baseUrl": ".",
 		"paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+			"@common/*": ["../common/src/*"],
     }
   },
   "include": ["src", "auto-imports.d.ts"]

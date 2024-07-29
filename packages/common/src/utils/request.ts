@@ -2,8 +2,8 @@ import axios from 'axios';
 import type { InternalAxiosRequestConfig, AxiosInstance, AxiosResponse, AxiosError } from 'axios';
 import qs from 'qs';
 
-import type { CreateAxiosOptions } from '@/types';
-import { ResultEnum, RequestMethodEnum } from '@/enums/request';
+import type { CreateAxiosOptions } from '../types';
+import { ResultEnum, RequestMethodEnum } from '../enums';
 
 import type { ResultData } from '../types';
 

@@ -11,5 +11,8 @@ export default defineConfig({
 			})]
 		}
 	},
+	server: {
+		port: 12000,
+	},
   plugins: [pluginReact(), pluginSass()],
 });
