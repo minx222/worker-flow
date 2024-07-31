@@ -1,6 +1,6 @@
 export enum ComponentType {
-	BOX = 'BOX',
-	TABLE = 'TABLE'
+	MENUD = 'MENUD',
+	PANEL = 'PANEL'
 }
 
 

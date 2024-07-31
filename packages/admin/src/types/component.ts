@@ -1,7 +1,7 @@
 import type { ComponentType } from '@packges/common'
 
 export interface Component {
-	type: ComponentType;
+	type?: ComponentType;
 	label: string;
 	className: string;
 	code: string;
