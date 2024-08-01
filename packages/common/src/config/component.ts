@@ -1,4 +1,4 @@
-export enum ComponentType {
+export enum MaterialType {
 	MENUD = 'MENUD',
 	PANEL = 'PANEL'
 }

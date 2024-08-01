@@ -1,11 +1,17 @@
-import type { ComponentType } from '@packges/common'
+/**
+ * @name ast
+ */
+export interface Ast<T extends Record<string, string | number | boolean>> {
+	el: string | React.FC
+	props?: T & {
+		style?: React.CSSProperties
+		className?: string
+	}
+	children?: Ast<T>[]
+}
 
-export interface Component {
-	type?: ComponentType;
+export interface Material<T extends Record<string, string | number | boolean> = Record<string, string | number | boolean>> {
 	label: string;
-	className: string;
 	code: string;
-	component: React.FC;
-	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-	props?: any
+	ast: Ast<T>;
 }

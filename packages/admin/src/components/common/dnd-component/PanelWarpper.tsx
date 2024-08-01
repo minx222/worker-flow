@@ -1,8 +1,7 @@
 
 import type { PropsWithChildren } from 'react';
-import { debounce } from 'radash'
-import { ComponentType } from '@common/config';
-import type { Component } from '@/types';
+import { MaterialType } from '@common/config';
+import type { Material } from '@/types';
 import classNames from 'classnames';
 
 import { useDrag, useDrop } from 'react-dnd'
@@ -11,16 +10,16 @@ import { useDrag, useDrop } from 'react-dnd'
 const PanelWarpper: React.FC<PropsWithChildren<{
 	className?: string
 	index: number
-	onChangeIndex: (start: number, end: number) => void
+	onChangeIndex?: (start: number, end: number) => void
 }>> = (props) => {
-	const { index, onChangeIndex } = props
+	const { index } = props
 	const warpper = useRef<HTMLDivElement>(null)
 
 	const [{ isDragging }, drag] = useDrag(() => ({
-    type: ComponentType.PANEL,
+    type: MaterialType.PANEL,
 		item: {
 			...props,
-			type: ComponentType.PANEL,
+			type: MaterialType.PANEL,
 		},
     collect: monitor => ({
       isDragging: !!monitor.isDragging(),
@@ -29,21 +28,17 @@ const PanelWarpper: React.FC<PropsWithChildren<{
 
 
 
-	const [{ isOver }, drop] = useDrop<Component, HTMLDivElement, {
+	const [{ isOver }, drop] = useDrop<Material, HTMLDivElement, {
 		isOver: boolean;
 	}>({
-		accept: ComponentType.PANEL,
+		accept: MaterialType.PANEL,
 		collect: (monitor) => ({
 				// 是否放置在目标上
 			isOver: monitor.isOver(),
 		}),
-		hover(item, monitor) {
-			const didHover = monitor.isOver({ shallow: true });
-			if (item.index === undefined) {
-				return;
-			}
-			onChangeIndex(index, item.index)
-		},
+		hover: (item) => {
+
+		}
 	});
 	
 	drop(drag(warpper))
