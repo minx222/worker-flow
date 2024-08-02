@@ -11,6 +11,12 @@ importers:
       radash:
         specifier: ^12.1.0
         version: 12.1.0
+      react-dnd:
+        specifier: ^16.0.1
+        version: 16.0.1(@types/hoist-non-react-statics@3.3.5)(@types/node@20.14.12)(@types/react@18.3.3)(react@18.3.1)
+      react-dnd-html5-backend:
+        specifier: ^16.0.1
+        version: 16.0.1
     devDependencies:
       '@biomejs/biome':
         specifier: ^1.8.3
@@ -207,28 +213,24 @@ packages:
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
-    libc: [musl]
 
   '@biomejs/cli-linux-arm64@1.8.3':
     resolution: {integrity: sha512-fed2ji8s+I/m8upWpTJGanqiJ0rnlHOK3DdxsyVLZQ8ClY6qLuPc9uehCREBifRJLl/iJyQpHIRufLDeotsPtw==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
-    libc: [glibc]
 
   '@biomejs/cli-linux-x64-musl@1.8.3':
     resolution: {integrity: sha512-UHrGJX7PrKMKzPGoEsooKC9jXJMa28TUSMjcIlbDnIO4EAavCoVmNQaIuUSH0Ls2mpGMwUIf+aZJv657zfWWjA==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
-    libc: [musl]
 
   '@biomejs/cli-linux-x64@1.8.3':
     resolution: {integrity: sha512-I8G2QmuE1teISyT8ie1HXsjFRz9L1m5n83U1O6m30Kw+kPMPSKjag6QGUn+sXT8V+XWIZxFFBoTDEDZW2KPDDw==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
-    libc: [glibc]
 
   '@biomejs/cli-win32-arm64@1.8.3':
     resolution: {integrity: sha512-J+Hu9WvrBevfy06eU1Na0lpc7uR9tibm9maHynLIoAjLZpQU3IW+OKHUtyL8p6/3pT2Ju5t5emReeIS2SAxhkQ==}
@@ -511,25 +513,21 @@ packages:
     resolution: {integrity: sha512-XZpXLa4PQi9OGA+j6x/MLG1xUpXqPxk+HSkvJJh0j0ReCBHwVUCHV+/REUmMC/5nX7cd/oqNmHwf9rhdlEFwLA==}
     cpu: [arm64]
     os: [linux]
-    libc: [glibc]
 
   '@rspack/binding-linux-arm64-musl@1.0.0-beta.0':
     resolution: {integrity: sha512-nJncvsxtlQFnsA4MztY+DUTG75Gy8ojf8BYkGb53tACrlsHNg8I7e1BwPcO8mtSkXSSowtsCIp4z752bIS936Q==}
     cpu: [arm64]
     os: [linux]
-    libc: [musl]
 
   '@rspack/binding-linux-x64-gnu@1.0.0-beta.0':
     resolution: {integrity: sha512-SUFzkd2fGx+AkFlx69V4aLaerBeSWIEiyrgFaC715EeL0SWyDVVHrrfPmkGBSz8i2WLn+MQC2Awd/SfBsnmKrw==}
     cpu: [x64]
     os: [linux]
-    libc: [glibc]
 
   '@rspack/binding-linux-x64-musl@1.0.0-beta.0':
     resolution: {integrity: sha512-XYz3E9G62600q3eAX1pSym6zaQnfIG97P3pn/d1He7qheLPxsKuSQXr9ql16Hrb9t/lVceSkmtn6ivILjT6gnw==}
     cpu: [x64]
     os: [linux]
-    libc: [musl]
 
   '@rspack/binding-win32-arm64-msvc@1.0.0-beta.0':
     resolution: {integrity: sha512-PDNorFRwzyMfaaA11tCxf5BcBKgWvtG4ALBFmDHOPMlVk43sOIEXhKbK62FXh8im3xUKFWxyt6GmsX5DQychlA==}

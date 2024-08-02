@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<style>
+		.box {
+			position: relative;
+			padding-bottom: 4px;
+			line-height: 1.5;
+		}
+
+		.char {
+			position: relative;
+			&::after {
+				content: '';
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 6px;
+				height: 6px;
+				background-color: #ff000045;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="box">
+	</div>
+
+	<script>
+		const text = 'WeMust GPT 上架了GLM-4-0520、GLM-4、GLM-4v、GLM-4-Air、GLM-4-AirX、GLM-4-Flash模型，以上模型均采用收費機製。模型收費機製和上下行總限製如下：GLM-4-0520 收費機製：0.1120 MOP/1k tokens 上下行限製：128K；GLM-4 收費機製：0.1120 MOP/1k tokens 上下行限製：128K；'
+		const box = document.querySelector('.box');
+		const els = text
+			.split('')
+			.map((str) => ({
+				el: document.createElement('span'),
+				text: str
+			}))
+			.map(ast => {
+				const el = ast.el
+				el.textContent = ast.text;
+				el.classList.add('char')
+				return el;
+			})
+		els.forEach((el) => {
+			box.appendChild(el)
+		})
+	</script>
+</body>
+
+</html>

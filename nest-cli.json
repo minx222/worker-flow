@@ -1,0 +1,29 @@
+{
+  "monorepo": true,
+  "root": "apps/low-code",
+  "sourceRoot": "apps/low-code/src",
+  "compilerOptions": {
+    "webpack": true,
+    "tsConfigPath": "apps/low-code/tsconfig.app.json"
+  },
+  "projects": {
+    "low-code": {
+      "type": "application",
+      "root": "apps/low-code",
+      "entryFile": "main",
+      "sourceRoot": "apps/low-code/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/low-code/tsconfig.app.json"
+      }
+    },
+    "gateway": {
+      "type": "application",
+      "root": "apps/gateway",
+      "entryFile": "main",
+      "sourceRoot": "apps/gateway/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/gateway/tsconfig.app.json"
+      }
+    }
+  }
+}
