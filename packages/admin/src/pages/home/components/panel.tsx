@@ -18,8 +18,12 @@ export const Panel = () => {
   const [,drop] = useDrop(() => {
     return {
       accept: [MaterialType.MENUD, MaterialType.PANEL],
-      drop(item: Material) {
-				addMaterial?.(item)
+      drop(item: Material & {
+				type: MaterialType
+			}) {
+				if(item.type === MaterialType.MENUD) {
+					addMaterial?.(item)
+				}
       }
     }
   }, [materials]);

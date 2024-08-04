@@ -1,16 +1,24 @@
+import type { AntdName } from '@/components/common/antd/component'
+
+type Value = Record<string, string | number | boolean>
+
 /**
  * @name ast
  */
-export interface Ast<T extends Record<string, string | number | boolean>> {
-	el: string | React.FC
+export interface AstProps<T extends Value> {
+	el?: string | React.FC
 	props?: T & {
 		style?: React.CSSProperties
 		className?: string
 	}
-	children?: Ast<T>[]
+	children?: (Ast<T> | string)[],
+	_elType?: 'window' | 'antd',
+	antdName?: AntdName
 }
 
-export interface Material<T extends Record<string, string | number | boolean> = Record<string, string | number | boolean>> {
+export type Ast<T extends Value> = AstProps<T> | string
+
+export interface Material<T extends Value = Value> {
 	label: string;
 	code: string;
 	ast: Ast<T>;
