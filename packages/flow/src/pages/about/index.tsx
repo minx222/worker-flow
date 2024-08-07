@@ -1,34 +1,68 @@
-import { Button, Tag, Input } from 'antd'
+import React, { useCallback } from 'react';
+import {
+  ReactFlow,
+  addEdge,
+  MiniMap,
+  Controls,
+  Background,
+  useNodesState,
+  useEdgesState,
+} from '@xyflow/react';
 
-import { useAppDispatch, useAppSelector } from '@/stores'
-import { increment, decrement, incrementAsync } from '@/stores/modules/count'
+import {
+  nodes as initialNodes,
+  edges as initialEdges,
+} from './initial-elements';
+import AnnotationNode from './AnnotationNode';
+import ToolbarNode from './ToolbarNode';
+import ResizerNode from './ResizerNode';
+import CircleNode from './CircleNode';
+import TextNode from './TextNode';
+import ButtonEdge from './ButtonEdge';
 
-const About = () => {
-    const navigate = useNavigate()
+import '@xyflow/react/dist/style.css';
+import './overview.css';
 
-    const count = useAppSelector(state => state.counter.count)
-    const dispatch = useAppDispatch();
+const nodeTypes = {
+  annotation: AnnotationNode,
+  tools: ToolbarNode,
+  resizer: ResizerNode,
+  circle: CircleNode,
+  textinput: TextNode,
+};
 
-    const [incrementAmount, setIncrementAmount] = useState(1)
+const edgeTypes = {
+  button: ButtonEdge,
+};
 
-    const backHome = () => {
-        navigate('/')
-    }
+const nodeClassName = (node) => node.type;
 
-    return (
-        <div className="flex flex-col gap-3 items-center p-4">
-            <Button onClick={backHome}>返回首页</Button>
-            <Tag className='text-xl w-fit'>当前count的值为:{count}</Tag>
-            <div className='flex gap-3 w-fit'>
-                <Button onClick={() => dispatch(increment())}>++</Button>
-                <Button onClick={() => dispatch(decrement())}>--</Button>
-            </div>
-            <div className='flex gap-2'>
-                <Input min={1} value={incrementAmount} onChange={(e) => setIncrementAmount(Number(e.target.value))} />
-                <Button onClick={() => dispatch(incrementAsync(incrementAmount))}>加</Button>
-            </div>
-        </div>
-    )
-}
+const OverviewFlow = () => {
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  const onConnect = useCallback(
+    (params) => setEdges((eds) => addEdge(params, eds)),
+    [],
+  );
 
-export default About
+  return (
+    <ReactFlow
+      nodes={nodes}
+      edges={edges}
+      onNodesChange={onNodesChange}
+      onEdgesChange={onEdgesChange}
+      onConnect={onConnect}
+      fitView
+      attributionPosition="top-right"
+      nodeTypes={nodeTypes}
+      edgeTypes={edgeTypes}
+      className="overview"
+    >
+      <MiniMap zoomable pannable nodeClassName={nodeClassName} />
+      <Controls />
+      <Background />
+    </ReactFlow>
+  );
+};
+
+export default OverviewFlow;

@@ -1,3 +1,3 @@
-export * from './img-node'
-
 export * from './node'
+
+export type * from './types'
